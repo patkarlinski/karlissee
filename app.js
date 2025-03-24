@@ -19,7 +19,7 @@ http.createServer((req, res) => {
             if (exists) {
                 res.writeHead(200, {
                     'Content-Type': 'application/octet-stream',
-                    'Content-Disposition': 'attachment; filename=example.txt'
+                    'Content-Disposition': 'attachment; filename="Karlinski_Patryk_cv.pdf"'
                 });
                 const fileStream = fs.createReadStream(filePath);
                 fileStream.pipe(res);
