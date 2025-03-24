@@ -86,3 +86,4 @@ function shutdownDB() {
     getCounts();
     db.close();
 }
+/** end database */
