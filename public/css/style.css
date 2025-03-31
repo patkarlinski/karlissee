@@ -47,6 +47,9 @@ a:hover {
 .section-dkblue {
     background-color: var(--dkblue);
 }
+img {
+    width: 100%;
+}
 /* intro style */
 #intro {
     padding: 4rem 1rem 10rem 1rem;
