@@ -58,6 +58,17 @@ http.createServer((req, res) => {
             res.writeHead(200, { 'Content-Type': 'application/javascript' });
             res.end(data);
         });
+    } else if (req.url.startsWith('/img/')) {
+        const imagePath = path.join(__dirname, 'public', req.url);
+        fs.readFile(imagePath, (err, data) => {
+            if (err) {
+                res.writeHead(404, { 'Content-Type': 'text/plain' });
+                res.end('Nie znaleziono obrazka');
+                return;
+            }
+            res.writeHead(200, { 'Content-Type': 'image/jpeg' });
+            res.end(data);
+        });
     } else {
         res.writeHead(404, { 'Content-Type': 'text/plain' });
         res.end('Nie znaleziono zasobu');
