@@ -13,6 +13,16 @@ http.createServer((req, res) => {
             res.writeHead(200, { 'Content-Type': 'text/html' });
             res.end(data);
         });
+    } else if (req.url === '/about.html') {
+        fs.readFile(path.join(__dirname, 'public', 'about.html'), 'utf8', (err, data) => {
+            if (err) {
+                res.writeHead(500, { 'Content-Type': 'text/plain' });
+                res.end('Błąd serwera');
+                return;
+            }
+            res.writeHead(200, { 'Content-Type': 'text/html' });
+            res.end(data);
+        });
     } else if (req.url === '/download') {
         const filePath = path.join(__dirname, 'files', 'Karlinski_Patryk_cv.pdf');
         fs.exists(filePath, (exists) => {
