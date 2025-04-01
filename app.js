@@ -17,16 +17,27 @@ app.get('/about', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'about.html'));
 });
 
-app.get('/download', (req, res) => {
-    const filePath = path.join(__dirname, 'files', 'Karlinski_Patryk_cv.pdf');
-    fs.exists(filePath, (exists) => {
-        if (exists) {
-            res.download(filePath, 'Karlinski_Patryk_cv.pdf');
-        } else {
-            res.status(404).send('Plik nie znaleziony');
-        }
-    });
+app.get('/download', async (req, res) => {
+    const fileName = 'Karlinski_Patryk_cv.pdf';
+    const filePath = path.resolve(__dirname, 'files', fileName);
+
+    try {
+        console.log(`Sprawdzam dostępność pliku: ${filePath}`);
+        await fs.promises.access(filePath, fs.constants.F_OK);
+        
+        console.log('Plik dostępny, rozpoczynamy pobieranie');
+        res.setHeader('Content-Type', 'application/pdf');
+        res.setHeader('Content-Disposition', `attachment; filename="${encodeURIComponent(fileName)}"`);
+        
+        const fileStream = fs.createReadStream(filePath);
+        fileStream.pipe(res);
+    } catch (err) {
+        console.error('Błąd dostępu do pliku:', err);
+        res.status(err.code === 'ENOENT' ? 404 : 500)
+           .send(err.code === 'ENOENT' ? 'Plik nie znaleziony' : 'Błąd serwera');
+    }
 });
+
 
 
 
