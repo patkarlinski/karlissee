@@ -18,14 +18,11 @@ app.get('/about', (req, res) => {
 });
 
 app.get('/download', (req, res) => {
-    console.log('Próba pobrania pliku');
     const filePath = path.join(__dirname, 'files', 'Karlinski_Patryk_cv.pdf');
     fs.exists(filePath, (exists) => {
         if (exists) {
-            console.log('Plik znaleziony, rozpoczynamy pobieranie');
             res.download(filePath, 'Karlinski_Patryk_cv.pdf');
         } else {
-            console.log('Plik nie znaleziony');
             res.status(404).send('Plik nie znaleziony');
         }
     });
