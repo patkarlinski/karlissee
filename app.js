@@ -17,15 +17,18 @@ app.get('/about', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'about.html'));
 });
 
-app.get('/download', (req, res) => {
+app.get('/download', async (req, res) => {
     const filePath = path.join(__dirname, 'files', 'Karlinski_Patryk_cv.pdf');
-    fs.exists(filePath, (exists) => {
-        if (exists) {
-            res.download(filePath, 'Karlinski_Patryk_cv.pdf');
-        } else {
-            res.status(404).send('Plik nie znaleziony');
-        }
-    });
+    
+    try {
+        console.log(`Sprawdzam dostępność pliku: ${filePath}`);
+        await fs.access(filePath, fs.constants.F_OK); // Sprawdzamy, czy plik istnieje
+        console.log('Plik dostępny, rozpoczynamy pobieranie');
+        res.download(filePath, 'Karlinski_Patryk_cv.pdf'); // Plik istnieje, pobierz go
+    } catch (err) {
+        console.error('Błąd dostępu do pliku:', err);
+        res.status(404).send('Plik nie znaleziony');
+    }
 });
 
 
