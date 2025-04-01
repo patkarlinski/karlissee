@@ -22,17 +22,14 @@ app.get('/download', async (req, res) => {
     const filePath = path.resolve(__dirname, 'files', fileName);
 
     try {
-        console.log(`Sprawdzam dostępność pliku: ${filePath}`);
         await fs.promises.access(filePath, fs.constants.F_OK);
-        
-        console.log('Plik dostępny, rozpoczynamy pobieranie');
+
         res.setHeader('Content-Type', 'application/pdf');
         res.setHeader('Content-Disposition', `attachment; filename="${encodeURIComponent(fileName)}"`);
         
         const fileStream = fs.createReadStream(filePath);
         fileStream.pipe(res);
     } catch (err) {
-        console.error('Błąd dostępu do pliku:', err);
         res.status(err.code === 'ENOENT' ? 404 : 500)
            .send(err.code === 'ENOENT' ? 'Plik nie znaleziony' : 'Błąd serwera');
     }
