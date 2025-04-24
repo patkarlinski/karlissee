@@ -299,7 +299,7 @@ footer a {
     .menu--list {
         position: absolute;
         width: 30vw;
-        height: 40vh;
+        height: 35vh;
         background-color: var(--dkblue);
         flex-direction: column;
         justify-content: center;
@@ -367,3 +367,9 @@ footer a {
     }
 }
     
+
+@media (max-width: 450px) {
+    .menu--list {
+        height: 45vh;
+    }
+}
