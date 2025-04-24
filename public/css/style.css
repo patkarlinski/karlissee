@@ -299,7 +299,7 @@ footer a {
     .menu--list {
         position: absolute;
         width: 30vw;
-        height: 35vh;
+        height: 40vh;
         background-color: var(--dkblue);
         flex-direction: column;
         justify-content: center;
