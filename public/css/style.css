@@ -128,6 +128,12 @@ nav a:hover,
 nav [class*="fa-"]:hover {
     color: var(--magenta);
 }
+.menu--list {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    transition: left 0.2s linear;
+}
 .button {
     background-color: var(--magenta);
     color: var(--white);
@@ -205,6 +211,15 @@ footer ul {
 footer a {
     text-decoration: none;
 }
+
+.menu {
+    display: none;
+}
+
+.close {
+    display: none;
+}
+
 @media (min-width: 800px){
     article {
         display: grid;
@@ -256,4 +271,99 @@ footer a {
         margin-right: auto;
     }
 
+
 }
+
+@media (max-width: 700px) {
+    .menu {
+        display: block;
+        height: 38px;
+        width: 75px;
+        justify-self: start;
+    }
+    .menu path {
+        fill: var(--hotmag);
+    }
+    .close path {
+        fill: var(--hotmag);
+    }
+    .close {
+        height: 38px;
+        width: 75px;
+        justify-self: start;
+    }
+    .nav {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    .menu--list {
+        position: absolute;
+        width: 30vw;
+        height: 35vh;
+        background-color: var(--dkblue);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        top: 82px;
+        left: -100%;
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+    nav li:first-child {
+        flex-basis: auto;
+    }
+
+    .nav--visible {
+        left: 0;
+    }
+
+    .menu--hide {
+        display: none;
+    }
+
+    .close--show {
+        display: block;
+    }
+
+
+    #intro h2,
+    h2 {
+        font-size: 2rem;
+    }
+    .name span {
+        font-size: 3rem;
+    }
+    footer ul {
+        font-size: 2rem;
+    }
+    .nav-moblie {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+        justify-items: center;
+        }
+
+    .logo { 
+        grid-column: 1 / 3;
+        grid-row: 2;         
+        margin-bottom: 0.8rem;
+        font-size: 1.5rem;
+        padding: 1.2rem;
+     }
+    .button--resume {
+        max-width: 76px;
+        justify-self: end;
+        margin-right: 24px;
+
+    }
+    #intro {
+        padding: 32px 16px;
+    }
+    #contact {
+        max-width: 360px;
+    
+    }
+}
+    
