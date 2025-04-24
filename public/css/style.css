@@ -371,5 +371,6 @@ footer a {
 @media (max-width: 450px) {
     .menu--list {
         height: 45vh;
+        width: 34vw;
     }
 }
