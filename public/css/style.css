@@ -308,6 +308,8 @@ footer a {
         left: -100%;
         font-size: 1.5rem;
         font-weight: bold;
+        border-radius: 0px 12px 12px 0px;
+
     }
     nav li:first-child {
         flex-basis: auto;
