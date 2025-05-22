@@ -22,5 +22,3 @@ a.forEach(i => {
         close.classList.remove('close--show');
     })
 })
-
-console.log(a);
