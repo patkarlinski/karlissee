@@ -52,7 +52,11 @@
 </head>
 
 <body>
+    <div class="scroll-progress" aria-hidden="true">
+        <div class="scroll-progress__bar"></div>
+    </div>
     <nav class="nav">
+        <div class="nav-backdrop" aria-hidden="true"></div>
         <ul class="nav-moblie">
             <li class="logo">
                 <h1><a href="/">
@@ -62,7 +66,7 @@
                 </h1>
             </li>
             <div class="menu--list">
-                <li class="nav-deskopt"><a href="#procejts">Projects</a></li>
+                <li class="nav-deskopt"><a href="#projects">Projects</a></li>
                 <li class="nav-deskopt"><a href="/about">About</a></li>
                 <li class="nav-deskopt"><a href="#contact">Contact</a></li>
                 <li class="nav-deskopt"><a href="https://www.linkedin.com/in/patryk-karlinski-b322b6170/"
@@ -71,7 +75,14 @@
                 <li class="nav-deskopt"><a href="https://github.com/patkarlinski" target="_blank"> <span
                             class="fa-brands fa-square-github" aria-hidden="true"></span><span
                             class="sr-only">Github</span></a></li>
+                <li class="nav-mobile-only"><a class="button button--primary" href="/download">Resume</a></li>
             </div>
+            <li>
+                <button class="theme-toggle" type="button" aria-label="Toggle dark mode">
+                    <span class="theme-toggle__icon" aria-hidden="true"></span>
+                    <span class="theme-toggle__label">Dark</span>
+                </button>
+            </li>
             <svg class="menu" width="21" height="24" viewBox="0 0 21 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                     d="M0 4.5C0 3.67031 0.670312 3 1.5 3H19.5C20.3297 3 21 3.67031 21 4.5C21 5.32969 20.3297 6 19.5 6H1.5C0.670312 6 0 5.32969 0 4.5ZM0 12C0 11.1703 0.670312 10.5 1.5 10.5H19.5C20.3297 10.5 21 11.1703 21 12C21 12.8297 20.3297 13.5 19.5 13.5H1.5C0.670312 13.5 0 12.8297 0 12ZM21 19.5C21 20.3297 20.3297 21 19.5 21H1.5C0.670312 21 0 20.3297 0 19.5C0 18.6703 0.670312 18 1.5 18H19.5C20.3297 18 21 18.6703 21 19.5Z"
@@ -94,24 +105,167 @@
             <li class="button--resume"><a class="button" href="/download">Resume</a></li>
         </ul>
     </nav>
-    <section id="intro">
-        <p class="name">Hi, my name is 👋
-            <span>Patryk Karlinski.</span>
-        </p>
-        <h2>
-            I build web applications.
-        </h2>
-        <p>I'm a developer, specializing in HTML, CSS, and JavaScript.</p>
-        <p>Currently, I'm a senior software tester at <a href="https://www.iai-sa.com/pl/" target="_blank">IAI</a>.</p>
+    <section id="intro" class="reveal">
+        <div class="hero">
+            <div class="hero__content">
+                <p class="hero__kicker">Hi, I’m Patryk</p>
+                <h2 class="hero__title">
+                    I build <span class="hero__accent">bulletproof</span> web apps.
+                </h2>
+                <p class="hero__subtitle">
+                    Front-end developer leveraging a Senior QA background to deliver clean UI, flawless performance, and
+                    product-minded engineering.
+                </p>
+                <div class="hero__cta">
+                    <a class="button button--primary" href="#projects">View projects</a>
+                    <a class="button button--ghost" href="#contact">Contact</a>
+                </div>
+                <dl class="hero__stats" aria-label="Highlights">
+                    <div class="hero__stat">
+                        <dt>Focus</dt>
+                        <dd>UI & Quality</dd>
+                    </div>
+                    <div class="hero__stat">
+                        <dt>Stack</dt>
+                        <dd>JS / TS </dd>
+                    </div>
+                    <div class="hero__stat">
+                        <dt>Now</dt>
+                        <dd>Senior QA</dd>
+                    </div>
+                </dl>
+            </div>
+            <div class="hero__panel" aria-hidden="true"></div>
+        </div>
+    </section>
+    <div class="gradient"></div>
+    <section id="projects" aria-labelledby="projects-title" class="reveal">
+        <div class="projects-header">
+            <h2 id="projects-title">Projects</h2>
+            <p class="projects-subtitle">Wybrane projekty, nad którymi ostatnio pracowałem.</p>
+            <div class="projects-filters" role="tablist" aria-label="Project filters">
+                <button class="filter-chip is-active" type="button" data-filter="all" aria-pressed="true">All</button>
+                <button class="filter-chip" type="button" data-filter="node" aria-pressed="false">Node.js</button>
+                <button class="filter-chip" type="button" data-filter="astro" aria-pressed="false">Astro</button>
+                <button class="filter-chip" type="button" data-filter="css-tailwind" aria-pressed="false">CSS /
+                    Tailwind</button>
+            </div>
+        </div>
+        <div class="projects-grid">
+            <article class="project-card js-project" tabindex="0" data-tags="node,node.js,pm2,next,next.js,tailwind,css"
+                data-title="TrenerKarlinski.pl - High-Performance Sports Platform" data-eyebrow="Fullstack Application"
+                data-description="High-performance web app for a personal trainer, built with Next.js 15.
+
+What I focused on:
+• LCP — image components and loading so the first paint stays fast
+• SEO — dynamic metadata so pages rank well in search
+• Production — PM2 process manager + Nginx reverse proxy on a Linux VPS" data-demo="https://trenerkarlinski.pl"
+                data-github="https://github.com/patkarlinski/trener-app">
+
+                <div class="project-card__layout">
+                    <div class="project-meta">
+                        <p class="project-eyebrow">Fullstack Application</p>
+                        <h3 class="project-title">TrenerKarlinski.pl</h3>
+                        <p class="project-description">
+                            A modern web solution focused on speed and search engine visibility. It solves the problem
+                            of
+                            heavy media loading through image optimization and ensures high Google ranking via dynamic
+                            metadata implementation.
+                        </p>
+                        <ul class="project-tags">
+                            <li>Next.js</li>
+                            <li>TypeScript</li>
+                            <li>Tailwind CSS</li>
+                            <li>Linux/VPS</li>
+                        </ul>
+                        <div class="project-links">
+                            <a href="https://trenerkarlinski.pl" target="_blank" rel="noopener noreferrer">Live demo</a>
+                            <a href="https://github.com/patkarlinski/trener-app" target="_blank"
+                                rel="noopener noreferrer">GitHub</a>
+                        </div>
+                    </div>
+                    <div class="project-thumb">
+                        <img class="project-thumb__img" src="img/trenerkarlinski.webp"
+                            alt="Podgląd projektu TrenerKarlinski.pl" width="800" height="500" loading="lazy" />
+                    </div>
+                </div>
+            </article>
+
+            <article class="project-card js-project" tabindex="0" data-tags="astro,js,javascript,html,css"
+                data-title="Drozd 2.0 - Scrap Metal Yard" data-eyebrow="Commercial Project" data-description="Fast, static site for a scrap metal yard, built with Astro.
+
+• Lightweight pages with minimal JavaScript
+• Easy to update content for pricing and services
+• Straightforward layout for customers on mobile and desktop" data-demo="#" data-github="#">
+                <div class="project-card__layout">
+                    <div class="project-meta">
+                        <p class="project-eyebrow">Commercial Project</p>
+                        <h3 class="project-title">Drozd 2.0</h3>
+                        <p class="project-description">
+                            A fast, static web application built for a scrap metal yard using Astro. It streamlines
+                            business
+                            operations and presents up-to-date pricing and services.
+                        </p>
+                        <ul class="project-tags">
+                            <li>Astro</li>
+                            <li>JavaScript</li>
+                            <li>HTML</li>
+                            <li>CSS</li>
+                        </ul>
+                        <div class="project-links">
+                            <a href="https://drozdskup.pl/" target="_blank" rel="noopener noreferrer">Live demo</a>
+                            <a href="https://github.com/patkarlinski/drozd-2.0" target="_blank"
+                                rel="noopener noreferrer">GitHub</a>
+                        </div>
+                    </div>
+                    <div class="project-thumb">
+                        <img class="project-thumb__img" src="img/drozd.webp" alt="Podgląd projektu Drozd 2.0"
+                            width="800" height="500" loading="lazy" />
+                    </div>
+                </div>
+            </article>
+
+            <!-- <article class="project-card js-project" tabindex="0" data-tags="js,html,css" data-title="Project Three"
+                data-eyebrow="Practice"
+                data-description="Kolejny projekt – możesz tu podlinkować ćwiczenia z kursów, klony znanych aplikacji itp."
+                data-demo="#" data-github="#">
+                <div class="project-meta">
+                    <p class="project-eyebrow">Practice</p>
+                    <h3 class="project-title">Project Three</h3>
+                    <p class="project-description">
+                        Kolejny projekt – możesz tu podlinkować ćwiczenia z kursów, klony znanych aplikacji itp.
+                    </p>
+                    <ul class="project-tags">
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>JavaScript</li>
+                    </ul>
+                    <div class="project-links">
+                        <a href="#" target="_blank" rel="noopener noreferrer">Live demo</a>
+                        <a href="#" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    </div>
+                </div>
+            </article> -->
+        </div>
     </section>
     <div class="gradient"></div>
     <div class="section-plum">
-        <section id="contact">
-            <h2>Contact me !</h2>
-            <p> I'm always open to new experiences and skills. If you want your own website, text me. If you want to
-                hire
-                me, text me too!</p>
-            <p><a href="mailto:karlinski96@gmail.com" class="button">Text me</a></p>
+        <section id="contact" class="reveal">
+            <div class="contact">
+                <div class="contact__header">
+                    <h2>Let’s build something great.</h2>
+                    <p>
+                        If you want a website, a web app, or you’re hiring—send me a message. I reply fast.
+                    </p>
+                </div>
+                <div class="contact__actions">
+                    <a class="button button--primary" href="mailto:karlinski96@gmail.com">Email me</a>
+                    <button class="button button--ghost js-copy-email" type="button" data-email="karlinski96@gmail.com">
+                        Copy email
+                    </button>
+                    <p class="contact__note" aria-live="polite"></p>
+                </div>
+            </div>
         </section>
     </div>
     <div class="gradient"></div>
@@ -126,10 +280,27 @@
             <li><a href="mailto:karlinski96@gmail.com" class="fa-regular fa-envelope"><span
                         class="sr-only">Email</span></a></li>
         </ul>
-        <p><small>&copy; 2025 Patryk Karlinski. All rights reserved.</small>
+        <p><small>&copy; 2026 Patryk Karlinski. All rights reserved.</small>
         </p>
 
     </footer>
+    <button class="back-to-top" type="button" aria-label="Back to top">Top</button>
+
+    <dialog class="project-modal" aria-labelledby="project-modal-title">
+        <div class="project-modal__content">
+            <button class="project-modal__close" type="button" aria-label="Close">✕</button>
+            <p class="project-modal__eyebrow" id="project-modal-eyebrow"></p>
+            <h3 class="project-modal__title" id="project-modal-title"></h3>
+            <p class="project-modal__description" id="project-modal-description"></p>
+            <div class="project-modal__links">
+                <a class="project-modal__link" id="project-modal-demo" href="#" target="_blank"
+                    rel="noopener noreferrer">Live demo</a>
+                <a class="project-modal__link" id="project-modal-github" href="#" target="_blank"
+                    rel="noopener noreferrer">GitHub</a>
+            </div>
+            <p class="project-modal__hint">Tip: press ESC to close.</p>
+        </div>
+    </dialog>
     <script src="/script.js" defer></script>
 </body>
 

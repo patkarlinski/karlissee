@@ -1,0 +1,30 @@
+<div class="hero">
+    <div class="hero__content">
+        <p class="hero__kicker">Hi, I’m Patryk</p>
+        <h2 class="hero__title">
+            I build <span class="hero__accent">bulletproof</span> web apps.
+        </h2>
+        <p class="hero__subtitle">
+            Front-end developer leveraging a Senior QA background to deliver clean UI, flawless performance, and product-minded engineering.
+        </p>
+        <div class="hero__cta">
+            <a class="button button--primary" href="#projects">View projects</a>
+            <a class="button button--ghost" href="#contact">Contact</a>
+        </div>
+        <dl class="hero__stats" aria-label="Highlights">
+            <div class="hero__stat">
+                <dt>Focus</dt>
+                <dd>UI & Quality</dd>
+            </div>
+            <div class="hero__stat">
+                <dt>Stack</dt>
+                <dd>JS / TS / Astro</dd>
+            </div>
+            <div class="hero__stat">
+                <dt>Now</dt>
+                <dd>Senior QA</dd>
+            </div>
+        </dl>
+    </div>
+    <div class="hero__panel" aria-hidden="true"></div>
+</div>
