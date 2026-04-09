@@ -864,6 +864,17 @@ footer a {
 }
 
 @media (max-width: 700px) {
+    /* Android / mobile: blokada poziomego scrolla — inaczej widać drawer poza ekranem (100vw + translateX). */
+    html {
+        overflow-x: hidden;
+        max-width: 100%;
+    }
+    body {
+        overflow-x: hidden;
+        max-width: 100%;
+        position: relative;
+    }
+
     .button--resume {
         display: none;
     }
@@ -950,9 +961,14 @@ footer a {
         position: fixed;
         top: 0;
         right: 0;
+        bottom: 0;
         height: 100dvh;
-        width: min(100vw, 520px);
+        max-height: 100dvh;
+        /* % z viewportu fixed — bez 100vw (na Androidzie często powoduje overflow-x) */
+        width: min(100%, 520px);
+        max-width: 100%;
         padding: 5.25rem 1.25rem 1.25rem;
+        padding-bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px));
         background: rgba(13, 19, 33, 0.92);
         border-left: 1px solid rgba(148, 163, 184, 0.22);
         backdrop-filter: blur(14px);
@@ -961,12 +977,15 @@ footer a {
         align-items: center;
         gap: 1rem;
         left: auto;
-        transform: translateX(110%);
+        transform: translate3d(100%, 0, 0);
         transition: transform 180ms ease-out;
         font-size: 1.05rem;
         font-weight: 600;
         border-radius: 0;
         z-index: 2000;
+        box-sizing: border-box;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
     }
     .light-theme .menu--list {
         background: rgba(255, 255, 255, 0.95);
@@ -990,7 +1009,11 @@ footer a {
         pointer-events: auto;
     }
     body.nav-open .menu--list {
-        transform: translateX(0);
+        transform: translate3d(0, 0, 0);
+    }
+
+    body.nav-open {
+        overflow: hidden;
     }
 
     .menu--hide {
@@ -1074,9 +1097,10 @@ footer a {
 /* Nie zawężaj drawera na bardzo wąskich ekranach — stary override 34vw psuł szerokość. */
 @media (max-width: 450px) {
     .menu--list {
-        width: 100vw;
-        max-width: 100vw;
+        width: 100%;
+        max-width: 100%;
         height: 100dvh;
         padding: 5.25rem 1.5rem 1.5rem;
+        padding-bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px));
     }
 }
