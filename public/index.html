@@ -2,25 +2,10 @@
 <html lang="en">
 
 <head>
-    <link rel="canonical" href="https://karlissee.com" />
-    <!-- Google tag (gtag.js) -->
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-
-        window.addEventListener('DOMContentLoaded', function () {
-            const gtagScript = document.createElement('script');
-            gtagScript.src = "https://www.googletagmanager.com/gtag/js?id=G-VBY8DN5D8G";
-            gtagScript.async = true;
-            document.head.appendChild(gtagScript);
-
-            gtag('js', new Date());
-            gtag('config', 'G-VBY8DN5D8G');
-        });
-    </script>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://karlissee.com" />
+    <link rel="preload" as="image" href="/img/trenerkarlinski.webp" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="author" content="Patryk Karlinski">
     <meta name="description"
@@ -46,9 +31,39 @@
     <link rel="icon" type="image/png" href="img/favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oxygen&family=Oxygen+Mono&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preload" as="style"
+        href="https://fonts.googleapis.com/css2?family=Oxygen&family=Oxygen+Mono&display=swap"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Oxygen&family=Oxygen+Mono&display=swap">
+    </noscript>
+    <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    </noscript>
     <link rel="stylesheet" href="/css/style.css">
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        window.addEventListener('load', function () {
+            function loadGtag() {
+                var s = document.createElement('script');
+                s.src = 'https://www.googletagmanager.com/gtag/js?id=G-VBY8DN5D8G';
+                s.async = true;
+                document.head.appendChild(s);
+                gtag('js', new Date());
+                gtag('config', 'G-VBY8DN5D8G');
+            }
+            if ('requestIdleCallback' in window) {
+                requestIdleCallback(loadGtag, { timeout: 4000 });
+            } else {
+                setTimeout(loadGtag, 2000);
+            }
+        });
+    </script>
 </head>
 
 <body>
@@ -186,7 +201,8 @@
                     </div>
                     <div class="project-thumb">
                         <img class="project-thumb__img" src="img/trenerkarlinski.webp"
-                            alt="Podgląd projektu TrenerKarlinski.pl" width="800" height="500" loading="lazy" />
+                            alt="Podgląd projektu TrenerKarlinski.pl" width="800" height="500" fetchpriority="high"
+                            decoding="async" />
                     </div>
                 </div>
             </article>

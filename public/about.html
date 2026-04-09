@@ -2,18 +2,10 @@
 <html lang="en">
 
 <head>
-    <link rel="canonical" href="https://karlissee.com/about" />
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VBY8DN5D8G"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'G-VBY8DN5D8G');
-    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://karlissee.com/about" />
+    <link rel="preload" as="image" href="/img/Patryk_Karlinski_2025.webp" />
     <meta name="description"
         content="Learn about my professional experience and find out more about Patryk Karlinski, a web developer.">
     <meta name="author" content="Patryk Karlinski">
@@ -32,9 +24,39 @@
     <link rel="icon" type="image/png" href="img/favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oxygen&family=Oxygen+Mono&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preload" as="style"
+        href="https://fonts.googleapis.com/css2?family=Oxygen&family=Oxygen+Mono&display=swap"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Oxygen&family=Oxygen+Mono&display=swap">
+    </noscript>
+    <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    </noscript>
     <link rel="stylesheet" href="/css/style.css">
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        window.addEventListener('load', function () {
+            function loadGtag() {
+                var s = document.createElement('script');
+                s.src = 'https://www.googletagmanager.com/gtag/js?id=G-VBY8DN5D8G';
+                s.async = true;
+                document.head.appendChild(s);
+                gtag('js', new Date());
+                gtag('config', 'G-VBY8DN5D8G');
+            }
+            if ('requestIdleCallback' in window) {
+                requestIdleCallback(loadGtag, { timeout: 4000 });
+            } else {
+                setTimeout(loadGtag, 2000);
+            }
+        });
+    </script>
 </head>
 
 <body>
@@ -120,7 +142,8 @@
                     </ul>
                 </div>
                 <div class="about-photo">
-                    <img src="./img/Patryk_Karlinski_2025.webp" alt="Photo of Patryk" />
+                    <img src="./img/Patryk_Karlinski_2025.webp" alt="Photo of Patryk" width="800" height="1200"
+                        fetchpriority="high" decoding="async" />
                 </div>
             </div>
         </section>
